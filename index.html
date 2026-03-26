@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VR Solar System</title>
+  <script src="script/aframe.min.js"></script>
+</head>
+
+<body>
+<a-scene>
+
+  <a-assets>
+    <img id="milkyway" src="texture/2k_stars_milky_way.jpg">
+    <img id="sun-texture" src="texture/2k_sun.jpg">
+    <img id="mercury-texture" src="texture/2k_mercury.jpg">
+    <img id="venus-texture" src="texture/2k_venus_surface.jpg">
+    <img id="earth-texture" src="texture/2k_earth_daymap.jpg">
+    <img id="mars-texture" src="texture/2k_mars.jpg">
+    <img id="jupiter-texture" src="texture/2k_jupiter.jpg">
+    <img id="saturn-texture" src="texture/2k_saturn.jpg">
+    <img id="saturn-ring" src="texture/2k_saturn_ring_alpha.png">
+    <img id="uranus-texture" src="texture/2k_uranus.jpg">
+    <img id="neptune-texture" src="texture/2k_neptune.jpg">
+    <img id="moon-texture" src="texture/2k_moon.jpg">
+  </a-assets>
+
+  <!-- Sky -->
+  <a-sky src="#milkyway"
+    animation="property: rotation; to: 0 360 0; dur: 900000; loop: true">
+  </a-sky>
+
+  <!-- Camera -->
+  <a-entity position="0 8 40">
+    <a-camera
+      wasd-controls="acceleration: 150"
+      look-controls="pointerLockEnabled: true">
+      <a-cursor color="#FFFFFF" opacity="0.5"></a-cursor>
+    </a-camera>
+  </a-entity>
+
+  <!-- Lighting -->
+  <a-entity light="type: ambient; intensity: 0.3"></a-entity>
+  <a-entity light="type: point; intensity: 3; distance: 400" position="0 0 0"></a-entity>
+
+  <a-entity>
+
+    <!-- Sun -->
+    <a-sphere src="#sun-texture"
+      radius="3"
+      material="shader: flat; emissive: #ff7700; emissiveIntensity: 1.0"
+      animation="property: rotation; to: 0 360 0; dur: 50000; loop: true">
+    </a-sphere>
+
+    <!-- Orbit Rings -->
+    <a-ring radius-inner="5.9"  radius-outer="6.0"  rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="8.9"  radius-outer="9.0"  rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="11.9" radius-outer="12.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="14.9" radius-outer="15.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="19.9" radius-outer="20.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="24.9" radius-outer="25.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="29.9" radius-outer="30.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+    <a-ring radius-inner="34.9" radius-outer="35.0" rotation="-90 0 0" material="color: #ffffff; opacity: 0.15; transparent: true; shader: flat"></a-ring>
+
+    <!-- Mercury -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 10000; loop: true; easing: linear">
+      <a-entity position="6 0 0">
+        <a-sphere src="#mercury-texture" radius="0.4"
+          animation="property: rotation; to: 0 360 0; dur: 7000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+    <!-- Venus -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
+      <a-entity position="9 0 0">
+        <a-sphere src="#venus-texture" radius="0.6"
+          animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+    <!-- Earth + Moon -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 30000; loop: true; easing: linear">
+      <a-entity position="12 0 0">
+
+        <a-sphere src="#earth-texture" radius="0.7"
+          animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
+        </a-sphere>
+
+        <!-- Moon -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 6000; loop: true; easing: linear">
+          <a-entity position="1.5 0 0">
+            <a-sphere src="#moon-texture" radius="0.2"></a-sphere>
+          </a-entity>
+        </a-entity>
+
+      </a-entity>
+    </a-entity>
+
+    <!-- Mars -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 45000; loop: true; easing: linear">
+      <a-entity position="15 0 0">
+        <a-sphere src="#mars-texture" radius="0.5"
+          animation="property: rotation; to: 0 360 0; dur: 9000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+    <!-- Jupiter — warm tan/beige with orange-brown banding via texture -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 70000; loop: true; easing: linear">
+      <a-entity position="20 0 0">
+        <a-sphere
+          radius="1.4"
+          material="src: #jupiter-texture;
+            color: #C88B3A;
+            shader: standard;
+            roughness: 0.8;
+            metalness: 0.0"
+          animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+    <!-- Saturn + Rings — pale gold body, wide flat rings -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 90000; loop: true; easing: linear">
+      <a-entity position="25 0 0">
+
+        <!-- Saturn body — pale gold with subtle banding via texture -->
+        <a-sphere
+          radius="1.2"
+          material="src: #saturn-texture;
+            color: #E8D5A3;
+            shader: standard;
+            roughness: 0.85;
+            metalness: 0.0"
+          animation="property: rotation; to: 0 360 0; dur: 6000; loop: true; easing: linear">
+        </a-sphere>
+
+        <!-- Ring layer 1 — innermost, slightly darker -->
+        <a-ring
+          radius-inner="1.5"
+          radius-outer="1.9"
+          rotation="90 0 0"
+          material="color: #C8B89A;
+            opacity: 0.55;
+            transparent: true;
+            side: double;
+            shader: flat">
+        </a-ring>
+
+        <!-- Ring layer 2 — middle, brightest -->
+        <a-ring
+          radius-inner="1.9"
+          radius-outer="2.5"
+          rotation="90 0 0"
+          material="color: #DDD0AA;
+            opacity: 0.75;
+            transparent: true;
+            side: double;
+            shader: flat">
+        </a-ring>
+
+        <!-- Ring layer 3 — outermost, fading -->
+        <a-ring
+          radius-inner="2.5"
+          radius-outer="3.1"
+          rotation="90 0 0"
+          material="src: #saturn-ring;
+            opacity: 0.45;
+            transparent: true;
+            side: double;
+            shader: flat">
+        </a-ring>
+
+      </a-entity>
+    </a-entity>
+
+    <!-- Uranus — pale cyan / soft aqua blue -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 120000; loop: true; easing: linear">
+      <a-entity position="30 0 0">
+        <a-sphere
+          radius="1"
+          material="src: #uranus-texture;
+            color: #7DE8E8;
+            shader: standard;
+            roughness: 0.75;
+            metalness: 0.0"
+          animation="property: rotation; to: 0 360 0; dur: 10000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+    <!-- Neptune -->
+    <a-entity animation="property: rotation; to: 0 360 0; dur: 150000; loop: true; easing: linear">
+      <a-entity position="35 0 0">
+        <a-sphere src="#neptune-texture" radius="1"
+          animation="property: rotation; to: 0 360 0; dur: 11000; loop: true; easing: linear">
+        </a-sphere>
+      </a-entity>
+    </a-entity>
+
+  </a-entity>
+
+</a-scene>
+</body>
+</html>
